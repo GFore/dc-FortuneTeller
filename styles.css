@@ -1,0 +1,32 @@
+html, body {height: 100%; width: 100%}
+
+body {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    padding: 0; margin: 0; 
+    display: flex;
+    flex-direction: column; align-items: center;
+}
+
+h1 {font-size: 50px; margin: 0; margin-top: 100px;}
+
+.quoteDisplay {
+    font-size: 45px; padding: 20px; margin: 15px;
+    align-items: center;}
+
+button {
+    height: 40px; margin: 6px;
+    font-size: 20px; font-family: 'Mukta', sans-serif;
+    color: white; background-color: dodgerblue;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+button:hover {
+    box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+}
+button:focus {
+    outline: none;
+    box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+}
