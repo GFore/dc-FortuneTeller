@@ -1,82 +1,82 @@
 const fortuneButton = document.querySelector('[data-trigger="fortune"]');
 const quoteButton = document.querySelector('[data-trigger="quote"]');
-const outputFortune = document.querySelector('[data-output="fortune"]');
 const outputQuote = document.querySelector('[data-output="quote"]');
 const authorElement = document.querySelector('[data-output="author"]');
 
 fortuneButton.addEventListener('click', function () {
     document.getElementById("mainH1").textContent = "Fortune Teller";
-    outputFortune.textContent = fortunes[Math.floor((Math.random() * 50) + 1)-1].quote;
+    document.getElementsByTagName("body")[0].classList = ['fortuneBG'];
+
+    const i = Math.floor((Math.random() * 50) + 1)-1;
+    outputQuote.textContent = fortunes[i].quote;
     authorElement.textContent = ``;
-    // outputQuote.textContent = ``;
-    outputQuote.innerHTML = "";
+    document.getElementsByTagName("main")[0].classList = ['fortuneDisplay'];
+    authorElement.classList = [fortunes[i].icon];
 });
+
 quoteButton.addEventListener('click', function () {
     document.getElementById("mainH1").textContent = "Coding Advisor";
-    // outputFortune.textContent = ``;
-    outputFortune.innerHTML = "";
+    document.getElementsByTagName("body")[0].classList = ['quoteBG'];
     const i = Math.floor((Math.random() * 44) + 1)-1;
     outputQuote.textContent = quotes[i].quote;
     authorElement.textContent = `-- ${quotes[i].author}`;
+    document.getElementsByTagName("main")[0].classList = ['quoteDisplay'];
+    authorElement.classList = ['authorDisplay'];
 });
-
-
-
-console.log('YO!');
 
 
 
 const fortunes = [
-    {"id": 0, "quote":'Some days you are pigeon, some days you are statue. Today, bring umbrella.'},
-    {"id": 1, "quote":'Your reality check about to bounce.'},
-    {"id": 2, "quote":'Wise person never try to get even. Wise person get odder.'},
-    {"id": 3, "quote":'Two days from now, tomorrow will be yesterday.'},
-    {"id": 4, "quote":'Your inferiority complex not good enough. Try harder.'},
-    {"id": 5, "quote":'When chosen for jury duty, tell judge "fortune cookie say guilty!”'},
-    {"id": 6, "quote":'Stop eating now. Food poisoning no fun.'},
-    {"id": 7, "quote":'You are cleverly disguised as responsible adult.'},
-    {"id": 8, "quote":'Tomorrow at breakfast, listen carefully: do what rice krispies tell you to.'},
-    {"id": 9, "quote":'Person who eat fortune cookie get lousy dessert.'},
-    {"id": 10, "quote":'Okay to look at past and future. Just don’t stare.'},
-    {"id": 11, "quote":'Wise person need either good manners or fast reflexes.'},
-    {"id": 12, "quote":'Soup was secret family recipe made from toad. Hope you liked!'},
-    {"id": 13, "quote":'You will soon have an out of money experience.'},
-    {"id": 14, "quote":'Probability of being seen directly proportional to stupidity of act.'},
-    {"id": 15, "quote":'He who dies with most toys, still dies.'},
-    {"id": 16, "quote":'Person who rests on laurels gets thorn in backside.'},
-    {"id": 17, "quote":'Practice safe eating. Always use condiments.'},
-    {"id": 18, "quote":'Person who give self haircut after rice wine will be buzzed.'},
-    {"id": 19, "quote":'Drive like hell, you will get there.'},
-    {"id": 20, "quote":'Two can live as cheaply as one, for half as long.'},
-    {"id": 21, "quote":'Hard work pay off in future. Laziness pay off now.'},
-    {"id": 22, "quote":'Life is sexually transmitted condition.'},
-    {"id": 23, "quote":'Give person fish, he eat for day. Teach person to fish, he always smell funny.'},
-    {"id": 24, "quote":'Person who argue with idiot is taken for fool.'},
-    {"id": 25, "quote":'Look before you leap. Or wear parachute.'},
-    {"id": 26, "quote":'The end is near, might as well have dessert.'},
-    {"id": 27, "quote":'This fortune no good. Try another.'},
-    {"id": 28, "quote":'Of all 27 alternatives, running away is best.'},
-    {"id": 29, "quote":'Closed mouth gathers no feet.'},
-    {"id": 30, "quote":'Honeymoon should be like table: 4 bare legs, no drawers.'},
-    {"id": 31, "quote":'Wise husband is one who thinks twice before saying nothing.'},
-    {"id": 32, "quote":'On keyboard of life, always keep one finger on escape key.'},
-    {"id": 33, "quote":'You are going nowhere, but at least path is interesting.'},
-    {"id": 34, "quote":'Indecision is key to flexibility.'},
-    {"id": 35, "quote":'Dijon vu -- the same mustard as before.'},
-    {"id": 36, "quote":'A day without sunshine is like night.'},
-    {"id": 37, "quote":'You are only young once, but can be immature forever.'},
-    {"id": 38, "quote":'Be nice to friends. You might need them to empty your bedpan.'},
-    {"id": 39, "quote":'The fortune you seek is in another cookie.'},
-    {"id": 40, "quote":'Politicians are like diapers: change often, and for same reason.'},
-    {"id": 41, "quote":'Atheism no fun. No holidays.'},
-    {"id": 42, "quote":'Fat person not afraid of heights - afraid of widths.'},
-    {"id": 43, "quote":'You have kleptomania. Take something for it.'},
-    {"id": 44, "quote":'When marriage outlawed, only outlaws have inlaws.'},
-    {"id": 45, "quote":'One tequila, two tequila, three tequila, floor.'},
-    {"id": 46, "quote":'The older you get, the better you were.'},
-    {"id": 47, "quote":'Age is high price to pay for maturity.'},
-    {"id": 48, "quote":'Procrastination is art of keeping up with yesterday.'},
-    {"id": 49, "quote":'A fool and his money are soon partying.'}
+    {"id": 0, "quote":'Some days you are pigeon, some days you are statue. Today, bring umbrella.', "icon": "fas fa-umbrella"},
+    {"id": 1, "quote":'Your reality check about to bounce.', "icon": "fas fa-check-double"},
+    {"id": 2, "quote":'Wise person never try to get even. Wise person get odder.', "icon": "fas fa-grin-tongue-wink"},
+    {"id": 3, "quote":'Two days from now, tomorrow will be yesterday.', "icon": "fas fa-calendar-alt"},
+    {"id": 4, "quote":'Your inferiority complex not good enough. Try harder.', "icon": "fas fa-tired"},
+    {"id": 5, "quote":'When chosen for jury duty, tell judge "fortune cookie say guilty!”', "icon": "fas fa-gavel"},
+    {"id": 6, "quote":'Stop eating now. Food poisoning no fun.', "icon": "fas fa-utensils"},
+    {"id": 7, "quote":'You are cleverly disguised as responsible adult.', "icon": "fas fa-user-secret"},
+    {"id": 8, "quote":'Tomorrow at breakfast, listen carefully: do what rice krispies tell you to.', "icon": "fas fa-headphones"},
+    {"id": 9, "quote":'Person who eat fortune cookie get lousy dessert.', "icon": "fas fa-cookie"},
+    {"id": 10, "quote":'Okay to look at past and future. Just don’t stare.', "icon": "fas fa-glasses"},
+    {"id": 11, "quote":'Wise person need either good manners or fast reflexes.', "icon": "fas fa-user-ninja"},
+    {"id": 12, "quote":'Soup was secret family recipe made from toad. Hope you liked!', "icon": "fas fa-frog"},
+    {"id": 13, "quote":'You will soon have an out of money experience.', "icon": "fas fa-hand-holding-usd"},
+    {"id": 14, "quote":'Probability of being seen directly proportional to stupidity of act.', "icon": "fas fa-binoculars"},
+    {"id": 15, "quote":'He who dies with most toys, still dies.', "icon": "fas fa-motorcycle"},
+    {"id": 16, "quote":'Person who rests on laurels gets thorn in backside.', "icon": "fab fa-affiliatetheme"},
+    {"id": 17, "quote":'Practice safe eating. Always use condiments.', "icon": "fas fa-utensils"},
+    {"id": 18, "quote":'Person who give self haircut after rice wine will be buzzed.', "icon": "fas fa-cut"},
+    {"id": 19, "quote":'Drive like hell, you will get there.', "icon": "fas fa-car-crash"},
+    {"id": 20, "quote":'Two can live as cheaply as one, for half as long.', "icon": "fas fa-user-friends"},
+    {"id": 21, "quote":'Hard work pay off in future. Laziness pay off now.', "icon": "fas fa-bed"},
+    {"id": 22, "quote":'Life is sexually transmitted condition.', "icon": "fab fa-slideshare"},
+    {"id": 23, "quote":'Give person fish, he eat for day. Teach person to fish, he always smell funny.', "icon": "fas fa-fish"},
+    {"id": 24, "quote":'Person who argue with idiot is taken for fool.', "icon": "fas fa-people-carry"},
+    {"id": 25, "quote":'Look before you leap. Or wear parachute.', "icon": "fas fa-parachute-box"},
+    {"id": 26, "quote":'The end is near, might as well have dessert.', "icon": "fas fa-birthday-cake"},
+    {"id": 27, "quote":'This fortune no good. Try another.', "icon": "fas fa-times"},
+    {"id": 28, "quote":'Of all 27 alternatives, running away is best.', "icon": "fab fa-accessible-icon"},
+    {"id": 29, "quote":'Closed mouth gathers no feet.', "icon": "far fa-meh-rolling-eyes"},
+    {"id": 30, "quote":'Honeymoon should be like table: 4 bare legs, no drawers.', "icon": "fas fa-yin-yang"},
+    {"id": 31, "quote":'Wise husband is one who thinks twice before saying nothing.', "icon": "fas fa-user-alt-slash"},
+    {"id": 32, "quote":'On keyboard of life, always keep one finger on escape key.', "icon": "fas fa-keyboard"},
+    {"id": 33, "quote":'You are going nowhere, but at least path is interesting.', "icon": "fas fa-swimmer"},
+    {"id": 34, "quote":'Indecision is key to flexibility.', "icon": "fas fa-question"},
+    {"id": 35, "quote":'Dijon vu -- the same mustard as before.', "icon": "fas fa-mortar-pestle"},
+    {"id": 36, "quote":'A day without sunshine is like night.', "icon": "fas fa-sun"},
+    {"id": 37, "quote":'You are only young once, but can be immature forever.', "icon": "fas fa-child"},
+    {"id": 38, "quote":'Be nice to friends. You might need them to empty your bedpan.', "icon": "fas fa-poo"},
+    {"id": 39, "quote":'The fortune you seek is in another cookie.', "icon": "fas fa-cookie-bite"},
+    {"id": 40, "quote":'Politicians are like diapers: change often, and for same reason.', "icon": "fab fa-angellist"},
+    {"id": 41, "quote":'Atheism no fun. No holidays.', "icon": "fas fa-tree"},
+    {"id": 42, "quote":'Fat person not afraid of heights - afraid of widths.', "icon": "fab fa-android"},
+    {"id": 43, "quote":'You have kleptomania. Take something for it.', "icon": "fas fa-balance-scale"},
+    {"id": 44, "quote":'When marriage outlawed, only outlaws have inlaws.', "icon": "fas fa-couch"},
+    {"id": 45, "quote":'One tequila, two tequila, three tequila, floor.', "icon": "fas fa-cocktail"},
+    {"id": 46, "quote":'The older you get, the better you were.', "icon": "fas fa-blind"},
+    {"id": 47, "quote":'Age is high price to pay for maturity.', "icon": "fas fa-chalkboard-teacher"},
+    {"id": 48, "quote":'Procrastination is art of keeping up with yesterday.', "icon": "fas fa-calendar-check"},
+    {"id": 49, "quote":'A fool and his money are soon partying.', "icon": "fas fa-money-bill-wave"}
 ];
 
 
