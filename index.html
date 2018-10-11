@@ -9,12 +9,14 @@
     <title>Fortune Cookie</title>
 </head>
 <body>
-    <h1>Fortune Teller</h1>
+    <h1 id="mainH1">Fortune Teller</h1>
     <div>
-        <button data-trigger="new">Click here for another!</button>
-        <button data-trigger="reset">Reset</button>
+        <button data-trigger="fortune">New Fortune</button>
+        <button data-trigger="quote">New Coding Quote</button>
     </div>
-    <div class="quoteDisplay" id="hey" data-output></div>
+    <div class="fortuneDisplay" data-output="fortune"></div>
+    <div class="quoteDisplay" data-output="quote"></div>
+    <div class="authorDisplay" data-output="author"></div>
     
     <script src="script.js"></script>
 </body>

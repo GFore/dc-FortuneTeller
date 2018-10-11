@@ -1,21 +1,26 @@
-const triggerElement = document.querySelector('[data-trigger="new"]');
-const resetElement = document.querySelector('[data-trigger="reset"]');
-const outputElement = document.querySelector('[data-output]');
+const fortuneButton = document.querySelector('[data-trigger="fortune"]');
+const quoteButton = document.querySelector('[data-trigger="quote"]');
+const outputFortune = document.querySelector('[data-output="fortune"]');
+const outputQuote = document.querySelector('[data-output="quote"]');
+const authorElement = document.querySelector('[data-output="author"]');
 
-triggerElement.addEventListener('click', function () {
-    outputElement.textContent = fortunes[Math.floor((Math.random() * 51) + 1)-1];
+fortuneButton.addEventListener('click', function () {
+    document.getElementById("mainH1").textContent = "Fortune Teller";
+    outputFortune.textContent = fortunes[Math.floor((Math.random() * 50) + 1)-1].quote;
+    authorElement.textContent = ``;
+    // outputQuote.textContent = ``;
+    outputQuote.innerHTML = "";
 });
-resetElement.addEventListener('click', reset);
+quoteButton.addEventListener('click', function () {
+    document.getElementById("mainH1").textContent = "Coding Advisor";
+    // outputFortune.textContent = ``;
+    outputFortune.innerHTML = "";
+    const i = Math.floor((Math.random() * 44) + 1)-1;
+    outputQuote.textContent = quotes[i].quote;
+    authorElement.textContent = `-- ${quotes[i].author}`;
+});
 
 
-
-function butn() {
-    document.getElementById('hey').innerHTML='<h2>Hey Dude!</h2>';
-}
-
-function reset() {
-    document.getElementById('hey').innerHTML='';
-}
 
 console.log('YO!');
 

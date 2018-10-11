@@ -1,5 +1,5 @@
 html, body {height: 100%; width: 100%}
-
+* {outline: 1px solid red;}
 body {
     text-align: center;
     font-family: 'Indie Flower', cursive;
@@ -11,8 +11,22 @@ body {
 h1 {font-size: 50px; margin: 0; margin-top: 100px;}
 
 .quoteDisplay {
-    font-size: 45px; padding: 20px; margin: 15px;
-    align-items: center;}
+    font-family: 'Mukta', sans-serif;
+    font-size: 35px; padding: 20px; margin: 15px 15px 0 15px;
+    align-items: center;
+}
+
+.fortuneDisplay {
+    font-size: 45px; padding: 20px; margin: 15px 15px 0 15px;
+    align-items: center;
+}
+
+.authorDisplay {
+    font-size: 35px;
+    font-family: 'Mukta', sans-serif;
+    align-self: flex-end;
+    padding-right: 50px;
+}
 
 button {
     height: 40px; margin: 6px;
