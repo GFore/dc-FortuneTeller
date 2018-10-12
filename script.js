@@ -1,9 +1,12 @@
 const fortuneButton = document.querySelector('[data-trigger="fortune"]');   // New Fortune button
 const quoteButton = document.querySelector('[data-trigger="quote"]');       // New Coding Quote button
+const tweetButton = document.querySelector('[data-trigger="tweet"]');       // Tweet This button
 const outputQuote = document.querySelector('[data-output="quote"]');        // Paragraph element that displays the quote/fortune
 const authorElement = document.querySelector('[data-output="author"]');     // Italic element that displays FA icon for fortune/author for quote
 const bgSource = document.querySelector('[data-bgsource]');                 // Span element in footer to display link to background image source
-
+let Quote = '';
+let Author = '';
+let showingFortune = true;
 
 const bgSourceList = [
     {'type': 'fortune', 'url': "https://depts.washington.edu/chinaciv/painting/4pmtsprn.jpg"},
@@ -12,32 +15,52 @@ const bgSourceList = [
 
 bgSource.innerHTML = `<a href="${bgSourceList[0].url}" target="_blank">${bgSourceList[0].url}</a>`;
 
-fortuneButton.addEventListener('click', function () {
+function getFortune() {
+    showingFortune = true;
     document.getElementsByTagName("main")[0].classList = ['fortuneDisplay'];    //change main element to fortune class
     document.getElementById("mainH1").textContent = "Fortune Cookie";           //update H1 Header
     document.getElementsByTagName("body")[0].classList = ['fortuneBG'];         //update Body background image
     fortuneButton.classList=['btnFortune'];                                     //update Fortune button to fortune style
     quoteButton.classList=['btnFortune'];                                       //update Quote button to fortune style
+    tweetButton.classList=['btnFortune'];                                       //update Tweet button to fortune style
     const i = Math.floor((Math.random() * 50) + 1)-1;                           //generate random number to get random fortune
-    outputQuote.textContent = fortunes[i].quote;                                //update displayed text to the random fortune
+    Quote = fortunes[i].quote;
+    outputQuote.textContent = Quote;                                //update displayed text to the random fortune
     authorElement.textContent = ``;                                             //remove author name text in case switching from quotes
     authorElement.classList = [`${fortunes[i].icon} fortuneIcon`];              //add font awesome icon matching the random fortune and increase size
     bgSource.innerHTML = `<a href="${bgSourceList[0].url}" target="_blank">${bgSourceList[0].url}</a>`;
-});
+}
+
+
+
+fortuneButton.addEventListener('click', getFortune);
 
 quoteButton.addEventListener('click', function () {
+    showingFortune = false;
     document.getElementsByTagName("main")[0].classList = ['quoteDisplay'];  //change main element to quote class 
     document.getElementById("mainH1").textContent = "Coding Advisor";       //update H1 Header
     document.getElementsByTagName("body")[0].classList = ['quoteBG'];       //update Body background image
     fortuneButton.classList=['btnQuote'];                                   //update Fortune button to quote style
     quoteButton.classList=['btnQuote'];                                     //update Quote button to quote style
+    tweetButton.classList=['btnQuote'];                                     //update Tweet button to quote style
     const i = Math.floor((Math.random() * 44) + 1)-1;                       //generate random number to get random quote
-    outputQuote.textContent = quotes[i].quote;                              //update displayed text to the random quote
-    authorElement.textContent = `-- ${quotes[i].author}`;                   //update displayed text to the quote author
+    Quote = quotes[i].quote;
+    Author = quotes[i].author;
+    outputQuote.textContent = Quote;                              //update displayed text to the random quote
+    authorElement.textContent = `-- ${Author}`;                   //update displayed text to the quote author
     authorElement.classList = ['authorDisplay'];                            //add class style for author text
     bgSource.innerHTML = `<a href="${bgSourceList[1].url}" target="_blank">${bgSourceList[1].url}</a>`;
 });
 
+
+tweetButton.addEventListener('click', function () {
+    if (showingFortune) {
+        window.open('https://twitter.com/intent/tweet?hashtags=fortunecookie&text=' + encodeURIComponent('"' + Quote + '" '), 'Share', 'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+    } else {
+        window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent('"' + Quote + '" --' + Author), 'Share', 'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+
+    }
+});
 
 // fortunes = [{
 //              id: added to help visual scanning and to keep count, not used in code
@@ -148,3 +171,4 @@ const quotes = [
     {"id":42,"author":"C. A. R. Hoare","quote":"We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."},
     {"id":43,"author":"Seymour Cray","quote":"The trouble with programmers is that you can never tell what a programmer is doing until it’s too late."}
   ];
+getFortune();       // on initial page load, start with a fortune
