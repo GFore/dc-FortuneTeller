@@ -2,6 +2,15 @@ const fortuneButton = document.querySelector('[data-trigger="fortune"]');   // N
 const quoteButton = document.querySelector('[data-trigger="quote"]');       // New Coding Quote button
 const outputQuote = document.querySelector('[data-output="quote"]');        // Paragraph element that displays the quote/fortune
 const authorElement = document.querySelector('[data-output="author"]');     // Italic element that displays FA icon for fortune/author for quote
+const bgSource = document.querySelector('[data-bgsource]');                 // Span element in footer to display link to background image source
+
+
+const bgSourceList = [
+    {'type': 'fortune', 'url': "https://depts.washington.edu/chinaciv/painting/4pmtsprn.jpg"},
+    {'type': 'quote', 'url': "https://www.flickr.com/photos/alansimpsonme/34166680885/in/album-72157680236153332/"}
+]
+
+bgSource.innerHTML = `<a href="${bgSourceList[0].url}" target="_blank">${bgSourceList[0].url}</a>`;
 
 fortuneButton.addEventListener('click', function () {
     document.getElementsByTagName("main")[0].classList = ['fortuneDisplay'];    //change main element to fortune class
@@ -13,6 +22,7 @@ fortuneButton.addEventListener('click', function () {
     outputQuote.textContent = fortunes[i].quote;                                //update displayed text to the random fortune
     authorElement.textContent = ``;                                             //remove author name text in case switching from quotes
     authorElement.classList = [`${fortunes[i].icon} fortuneIcon`];              //add font awesome icon matching the random fortune and increase size
+    bgSource.innerHTML = `<a href="${bgSourceList[0].url}" target="_blank">${bgSourceList[0].url}</a>`;
 });
 
 quoteButton.addEventListener('click', function () {
@@ -25,6 +35,7 @@ quoteButton.addEventListener('click', function () {
     outputQuote.textContent = quotes[i].quote;                              //update displayed text to the random quote
     authorElement.textContent = `-- ${quotes[i].author}`;                   //update displayed text to the quote author
     authorElement.classList = ['authorDisplay'];                            //add class style for author text
+    bgSource.innerHTML = `<a href="${bgSourceList[1].url}" target="_blank">${bgSourceList[1].url}</a>`;
 });
 
 

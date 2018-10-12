@@ -9,7 +9,9 @@ body {
     text-align: center;
     font-family: 'Indie Flower', cursive;
     padding: 100px 0 0 0;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .fortuneBG {
@@ -31,10 +33,25 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    /* margin-bottom: 50px; */
 }
 
 h1 {font-size: 70px; margin: 20px; text-shadow: 4px 3px 3px #000000;}
 #holder {width: 70%}
+footer {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    margin: auto auto 0 auto;
+    align-self: flex-end;
+    color: rgb(114, 8, 8);
+    background-color: gray;
+    padding: 2px 5px;
+}
+
+footer a:hover, footer a:visited, footer a:active, footer a:link {
+    color: rgb(114, 8, 8);
+}
 
 .quoteDisplay {
     font-family: 'Mukta', sans-serif;
