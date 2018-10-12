@@ -1,31 +1,38 @@
-const fortuneButton = document.querySelector('[data-trigger="fortune"]');
-const quoteButton = document.querySelector('[data-trigger="quote"]');
-const outputQuote = document.querySelector('[data-output="quote"]');
-const authorElement = document.querySelector('[data-output="author"]');
+const fortuneButton = document.querySelector('[data-trigger="fortune"]');   // New Fortune button
+const quoteButton = document.querySelector('[data-trigger="quote"]');       // New Coding Quote button
+const outputQuote = document.querySelector('[data-output="quote"]');        // Paragraph element that displays the quote/fortune
+const authorElement = document.querySelector('[data-output="author"]');     // Italic element that displays FA icon for fortune/author for quote
 
 fortuneButton.addEventListener('click', function () {
-    document.getElementById("mainH1").textContent = "Fortune Teller";
-    document.getElementsByTagName("body")[0].classList = ['fortuneBG'];
-
-    const i = Math.floor((Math.random() * 50) + 1)-1;
-    outputQuote.textContent = fortunes[i].quote;
-    authorElement.textContent = ``;
-    document.getElementsByTagName("main")[0].classList = ['fortuneDisplay'];
-    authorElement.classList = [fortunes[i].icon];
+    document.getElementsByTagName("main")[0].classList = ['fortuneDisplay'];    //change main element to fortune class
+    document.getElementById("mainH1").textContent = "Fortune Cookie";           //update H1 Header
+    document.getElementsByTagName("body")[0].classList = ['fortuneBG'];         //update Body background image
+    fortuneButton.classList=['btnFortune'];                                     //update Fortune button to fortune style
+    quoteButton.classList=['btnFortune'];                                       //update Quote button to fortune style
+    const i = Math.floor((Math.random() * 50) + 1)-1;                           //generate random number to get random fortune
+    outputQuote.textContent = fortunes[i].quote;                                //update displayed text to the random fortune
+    authorElement.textContent = ``;                                             //remove author name text in case switching from quotes
+    authorElement.classList = [`${fortunes[i].icon} fortuneIcon`];              //add font awesome icon matching the random fortune and increase size
 });
 
 quoteButton.addEventListener('click', function () {
-    document.getElementById("mainH1").textContent = "Coding Advisor";
-    document.getElementsByTagName("body")[0].classList = ['quoteBG'];
-    const i = Math.floor((Math.random() * 44) + 1)-1;
-    outputQuote.textContent = quotes[i].quote;
-    authorElement.textContent = `-- ${quotes[i].author}`;
-    document.getElementsByTagName("main")[0].classList = ['quoteDisplay'];
-    authorElement.classList = ['authorDisplay'];
+    document.getElementsByTagName("main")[0].classList = ['quoteDisplay'];  //change main element to quote class 
+    document.getElementById("mainH1").textContent = "Coding Advisor";       //update H1 Header
+    document.getElementsByTagName("body")[0].classList = ['quoteBG'];       //update Body background image
+    fortuneButton.classList=['btnQuote'];                                   //update Fortune button to quote style
+    quoteButton.classList=['btnQuote'];                                     //update Quote button to quote style
+    const i = Math.floor((Math.random() * 44) + 1)-1;                       //generate random number to get random quote
+    outputQuote.textContent = quotes[i].quote;                              //update displayed text to the random quote
+    authorElement.textContent = `-- ${quotes[i].author}`;                   //update displayed text to the quote author
+    authorElement.classList = ['authorDisplay'];                            //add class style for author text
 });
 
 
-
+// fortunes = [{
+//              id: added to help visual scanning and to keep count, not used in code
+//              quote: text to display to user as fortune
+//              icon: class for the Font Awesome icon that kinda matches the fortune    
+//  },...]
 const fortunes = [
     {"id": 0, "quote":'Some days you are pigeon, some days you are statue. Today, bring umbrella.', "icon": "fas fa-umbrella"},
     {"id": 1, "quote":'Your reality check about to bounce.', "icon": "fas fa-check-double"},
@@ -79,7 +86,11 @@ const fortunes = [
     {"id": 49, "quote":'A fool and his money are soon partying.', "icon": "fas fa-money-bill-wave"}
 ];
 
-
+// quotes = [{
+//              id: added to help visual scanning and to keep count, not used in code
+//              author: person who supposedly said the quote    
+//              quote: text to display to user as the coding quote
+//  },...]
 const quotes = [
     {"id":0, "author":"Bill Sempf","quote":"QA Engineer walks into a bar. Orders a beer. Orders 0 beers. Orders 999999999 beers. Orders a lizard. Orders -1 beers. Orders a sfdeljknesv."},
     {"id":1,"author":"Phil Karlton","quote":"There are only two hard things in Computer Science: cache invalidation, naming things and off-by-one errors."},
